@@ -3,17 +3,17 @@ Configuration Django pour le projet mademoiselle_fashion.
 """
 from pathlib import Path
 from decouple import config, Csv
+import os
 
 # Construit les chemins à l'intérieur du projet
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # --- SÉCURITÉ ---------------------------------------------------------
 
-SECRET_KEY = config('SECRET_KEY')
-
-DEBUG = config('DEBUG', default=False, cast=bool)
-
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1,localhost', cast=Csv())
+# Cherche ces lignes dans ton settings.py et remplace-les :
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(',')
 
 # --- APPLICATIONS -------------------------------------------------------
 
