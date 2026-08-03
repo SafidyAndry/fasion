@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ produit.nom }} — Mademoiselle Fashion{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="container">
+        <div class="produit-detail">
+            <div class="produit-detail-image">
+                {% if produit.image %}
+                <img src="{{ produit.image.url }}" alt="{{ produit.nom }}">
+                {% endif %}
+            </div>
+
+            <div class="produit-detail-infos">
+                <h1>{{ produit.nom }}</h1>
+                <p class="produit-detail-prix">{{ produit.prix }} Ar</p>
+                <p class="produit-detail-description">{{ produit.description }}</p>
+
+                <div class="option-group">
+                    <span class="option-label">Couleur : {{ produit.get_couleurs_display }}</span>
+                    <div class="couleur-swatch couleur-{{ produit.couleurs }}" title="{{ produit.get_couleurs_display }}"></div>
+                </div>
+
+                <div class="option-group">
+                    <span class="option-label">Taille : {{ produit.get_tailles_display }}</span>
+                    <div class="taille-badge">{{ produit.tailles }}</div>
+                </div>
+
+                <a href="https://m.me/61576789926293" target="_blank" rel="noopener" class="btn btn-primary btn-large">
+                    Commander sur Messenger
+                </a>
+
+                <a href="{% url 'catalogue' %}" class="btn-link">&larr; Retour au catalogue</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

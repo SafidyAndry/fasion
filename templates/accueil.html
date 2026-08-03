@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Mademoiselle Fashion — L'élégance à portée de main{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="container hero-inner">
+        <h1>Mademoiselle Fashion</h1>
+        <p class="hero-slogan">L'élégance à portée de main</p>
+        <a href="{% url 'catalogue' %}" class="btn btn-primary">Découvrir la collection</a>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">Nos Dernières Pièces</h2>
+
+        {% if produits %}
+        <div class="produits-grid">
+            {% for produit in produits %}
+            <a href="{% url 'produit_detail' produit.pk %}" class="produit-card">
+                {% if produit.image %}
+                <div class="produit-image">
+                    <img src="{{ produit.image.url }}" alt="{{ produit.nom }}" loading="lazy">
+                </div>
+                {% endif %}
+                <div class="produit-info">
+                    <h3>{{ produit.nom }}</h3>
+                    <p class="produit-prix">{{ produit.prix }} Ar</p>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="empty-message">Aucun produit n'est disponible pour le moment. Revenez bientôt !</p>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

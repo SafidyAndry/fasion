@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Notre Collection — Mademoiselle Fashion{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="container">
+        <h1 class="section-title">Notre Collection</h1>
+
+        {% if produits %}
+        <div class="produits-grid">
+            {% for produit in produits %}
+            <a href="{% url 'produit_detail' produit.pk %}" class="produit-card">
+                {% if produit.image %}
+                <div class="produit-image">
+                    <img src="{{ produit.image.url }}" alt="{{ produit.nom }}" loading="lazy">
+                </div>
+                {% endif %}
+                <div class="produit-info">
+                    <h3>{{ produit.nom }}</h3>
+                    <p class="produit-prix">{{ produit.prix }} Ar</p>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="empty-message">Aucun produit disponible pour le moment.</p>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

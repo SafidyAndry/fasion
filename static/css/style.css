@@ -1,0 +1,488 @@
+/* ==========================================================================
+   Mademoiselle Fashion — Feuille de style principale
+   ========================================================================== */
+
+:root {
+    --color-primary: #A0522D;      /* Chocolat */
+    --color-primary-dark: #7A3E20;
+    --color-secondary: #F5F0EB;    /* Beige clair */
+    --color-text: #2B2420;
+    --color-text-light: #6E655D;
+    --color-white: #FFFFFF;
+    --color-border: #E3D9CC;
+    --color-success: #3C7A4B;
+    --color-error: #B23B3B;
+
+    --font-heading: 'Playfair Display', Georgia, serif;
+    --font-body: 'Poppins', -apple-system, sans-serif;
+
+    --radius: 10px;
+    --shadow-soft: 0 4px 16px rgba(160, 82, 45, 0.10);
+    --shadow-hover: 0 10px 28px rgba(160, 82, 45, 0.18);
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--color-text);
+    background-color: var(--color-white);
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.container-narrow {
+    max-width: 640px;
+}
+
+/* --- En-tête --- */
+
+.site-header {
+    background: var(--color-white);
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    letter-spacing: 0.5px;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+}
+
+.main-nav a {
+    font-size: 0.95rem;
+    color: var(--color-text);
+    transition: var(--transition);
+}
+
+.main-nav a:hover {
+    color: var(--color-primary);
+}
+
+.nav-cta {
+    background: var(--color-primary);
+    color: var(--color-white) !important;
+    padding: 10px 22px;
+    border-radius: 999px;
+    transition: var(--transition);
+}
+
+.nav-cta:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-1px);
+}
+
+/* --- Messages flash --- */
+
+.messages-container {
+    margin-top: 20px;
+}
+
+.alert {
+    padding: 14px 20px;
+    border-radius: var(--radius);
+    margin-bottom: 12px;
+    font-size: 0.92rem;
+}
+
+.alert-success {
+    background: #E7F3EA;
+    color: var(--color-success);
+    border: 1px solid #BFE0C8;
+}
+
+.alert-error {
+    background: #FBEAEA;
+    color: var(--color-error);
+    border: 1px solid #EFC3C3;
+}
+
+/* --- Bannière (hero) --- */
+
+.hero {
+    background: linear-gradient(135deg, var(--color-secondary) 0%, #EFE4D6 100%);
+    padding: 100px 0;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    color: var(--color-primary);
+    margin-bottom: 12px;
+}
+
+.hero-slogan {
+    font-size: 1.15rem;
+    color: var(--color-text-light);
+    font-style: italic;
+    margin-bottom: 32px;
+}
+
+/* --- Boutons --- */
+
+.btn {
+    display: inline-block;
+    padding: 14px 34px;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    transition: var(--transition);
+}
+
+.btn-primary {
+    background: var(--color-primary);
+    color: var(--color-white);
+}
+
+.btn-primary:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.btn-large {
+    display: block;
+    text-align: center;
+    width: 100%;
+    padding: 16px;
+    margin: 28px 0 14px;
+}
+
+.btn-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--color-primary);
+    font-size: 0.9rem;
+    border-bottom: 1px solid transparent;
+    transition: var(--transition);
+}
+
+.btn-link:hover {
+    border-bottom-color: var(--color-primary);
+}
+
+/* --- Sections génériques --- */
+
+.section {
+    padding: 72px 0;
+}
+
+.section-title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 8px;
+    color: var(--color-primary);
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--color-text-light);
+    margin-bottom: 40px;
+}
+
+.empty-message {
+    text-align: center;
+    color: var(--color-text-light);
+    padding: 40px 0;
+}
+
+/* --- Grille de produits --- */
+
+.produits-grid {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 28px;
+}
+
+.produit-card {
+    background: var(--color-white);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition);
+    border: 1px solid var(--color-border);
+}
+
+.produit-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+}
+
+.produit-image {
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    background: var(--color-secondary);
+}
+
+.produit-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.produit-card:hover .produit-image img {
+    transform: scale(1.05);
+}
+
+.produit-info {
+    padding: 18px;
+    text-align: center;
+}
+
+.produit-info h3 {
+    font-size: 1.05rem;
+    margin-bottom: 6px;
+}
+
+.produit-prix {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+/* --- Détail produit --- */
+
+.produit-detail {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: start;
+}
+
+.produit-detail-image {
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    background: var(--color-secondary);
+}
+
+.produit-detail-infos h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.produit-detail-prix {
+    font-size: 1.4rem;
+    color: var(--color-primary);
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.produit-detail-description {
+    color: var(--color-text-light);
+    margin-bottom: 28px;
+}
+
+.option-group {
+    margin-bottom: 20px;
+}
+
+.option-label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    margin-bottom: 10px;
+}
+
+.couleur-swatch {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 2px solid var(--color-border);
+}
+
+.couleur-noir { background: #1A1A1A; }
+.couleur-blanc { background: #FFFFFF; border-color: #CCC; }
+.couleur-rouge { background: #B23B3B; }
+.couleur-bleu { background: #34568B; }
+.couleur-vert { background: #4C7A50; }
+.couleur-rose { background: #E7A8B8; }
+.couleur-beige { background: #E3D2B4; }
+.couleur-chocolat { background: #A0522D; }
+
+.taille-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+/* --- Formulaire de contact --- */
+
+.contact-form {
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    color: var(--color-text);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 13px 16px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    background: var(--color-secondary);
+    transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    background: var(--color-white);
+}
+
+.field-errors {
+    list-style: none;
+    color: var(--color-error);
+    font-size: 0.82rem;
+    margin-top: 6px;
+}
+
+.contact-alt {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+}
+
+.contact-alt a {
+    color: var(--color-primary);
+}
+
+/* --- Pied de page --- */
+
+.site-footer {
+    background: var(--color-secondary);
+    padding: 32px 0;
+    margin-top: 40px;
+}
+
+.footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+}
+
+.footer-fb {
+    color: var(--color-primary);
+    font-weight: 500;
+}
+
+/* --- Responsive (mobile-first) --- */
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 64px 0;
+    }
+
+    .hero h1 {
+        font-size: 2.1rem;
+    }
+
+    .section {
+        padding: 48px 0;
+    }
+
+    .produit-detail {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .main-nav {
+        gap: 16px;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .produits-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 16px;
+    }
+
+    .hero h1 {
+        font-size: 1.7rem;
+    }
+}

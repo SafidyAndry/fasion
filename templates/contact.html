@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact — Mademoiselle Fashion{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="container container-narrow">
+        <h1 class="section-title">Contactez-nous</h1>
+        <p class="section-subtitle">Une question ? Écrivez-nous, nous vous répondrons rapidement.</p>
+
+        <form method="post" class="contact-form" novalidate>
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="form-group">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+                {% if field.errors %}
+                <ul class="field-errors">
+                    {% for error in field.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-primary">Envoyer le message</button>
+        </form>
+
+        <div class="contact-alt">
+            <p>Vous pouvez aussi nous écrire directement :</p>
+            <a href="mailto:safidynoavisoa@gmail.com">safidynoavisoa@gmail.com</a>
+            <a href="https://www.facebook.com/profile.php?id=61576789926293" target="_blank" rel="noopener">Notre page Facebook</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

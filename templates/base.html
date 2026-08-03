@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mademoiselle Fashion — boutique de vêtements et accessoires élégants. L'élégance à portée de main.">
+    <meta name="keywords" content="mode, vêtements, boutique, fashion, Madagascar, Mademoiselle Fashion">
+    <meta name="author" content="Mademoiselle Fashion">
+    <meta property="og:title" content="Mademoiselle Fashion">
+    <meta property="og:description" content="L'élégance à portée de main">
+    <meta property="og:type" content="website">
+    <title>{% block title %}Mademoiselle Fashion{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="{% url 'accueil' %}" class="logo">Mademoiselle Fashion</a>
+            <nav class="main-nav">
+                <a href="{% url 'accueil' %}">Accueil</a>
+                <a href="{% url 'catalogue' %}">Catalogue</a>
+                <a href="{% url 'contact' %}">Contact</a>
+                <a href="{{ MESSENGER_URL|default:'https://m.me/61576789926293' }}" class="nav-cta" target="_blank" rel="noopener">Commander</a>
+            </nav>
+        </div>
+    </header>
+
+    {% if messages %}
+        <div class="container messages-container">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>&copy; {% now "Y" %} Mademoiselle Fashion. Tous droits réservés.</p>
+            <a href="https://www.facebook.com/profile.php?id=61576789926293" target="_blank" rel="noopener" class="footer-fb">
+                Suivez-nous sur Facebook
+            </a>
+        </div>
+    </footer>
+</body>
+</html>
